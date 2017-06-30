@@ -1,0 +1,21 @@
+all: clean task4
+
+task4: task4.o JobControl.o LineParser.o variable.o
+	gcc -m32 -g -Wall -o myShell task4.o JobControl.o LineParser.o variable.o
+	
+task4.o: task4.c
+	gcc -g -Wall -m32 -ansi -c -o task4.o task4.c
+	
+JobControl.o: JobControl.c
+	gcc -g -Wall -m32 -ansi -c -o JobControl.o JobControl.c
+	
+LineParser.o: LineParser.c
+	gcc -g -Wall -m32 -ansi -c -o LineParser.o LineParser.c
+
+variable.o: variable.c
+	gcc -g -Wall -m32 -ansi -c -o variable.o variable.c
+
+.PHONY: clean
+
+clean: 
+	rm -f *.o myShell
